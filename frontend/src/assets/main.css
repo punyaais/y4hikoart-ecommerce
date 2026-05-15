@@ -1,0 +1,351 @@
+@import './base.css';
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'LobsterFugu';
+  src: url('./fonts/LobsterFuguRegular-JpaJ7.ttf') format('truetype');
+}
+
+:root {
+  --color-1: #303481;
+  --color-primary: #F6378F;
+  --color-secondary: #FFDD00;
+  --color-dark: #280000;
+  --color-light: #F5EFE8;
+  --color-soft: #8EA5EB;
+  --color-cream: #FFE0ED;
+}
+
+html, body, #app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#app {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  body {
+    margin: 0;
+    font-family: 'LobsterFugu', sans-serif;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F6378F;
+  border-radius: 10px;
+}
+
+@layer components {
+  .input-modern {
+    width: 100%;
+    /* padding: 0.85rem 1rem; */
+    border-radius: 0.85rem;
+    border: 2px solid var(--color-primary);
+    transition: all 300ms;
+    color: var(--color-dark);
+    background: transparent;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(6px);
+  }
+
+  .input-modern:focus {
+    outline: none;
+    border-color: var(--color-soft);
+    background: rgba(255, 255, 255, 0.78);
+    transform: scale(1.01);
+  }
+
+  .btn-main {
+    width: 100%;
+    /* padding: 0.85rem 0; */
+    border-radius: 0.85rem;
+    /* font-weight: 700; */
+    transition: all 300ms;
+    background: var(--color-secondary);
+    color: var(--color-dark);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  .btn-main:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+  }
+}
+
+@keyframes authGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes authBlobFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(30px, -20px, 0) scale(1.08); }
+  66% { transform: translate3d(-20px, 25px, 0) scale(0.95); }
+}
+
+.auth-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 24%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 22%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 18%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.auth-shell::before,
+.auth-shell::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(85px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* .auth-shell::before {
+  width: 360px;
+  height: 360px;
+  left: -190px;
+  top: 40px;
+  background: rgb(255, 147, 196);
+  animation: authBlobFloat 14s ease-in-out infinite;
+}
+
+.auth-shell::after {
+  width: 440px;
+  height: 440px;
+  right: -250px;
+  bottom: 30px;
+  background: rgb(255, 245, 186);
+  animation: authBlobFloat 18s ease-in-out infinite reverse;
+} */
+
+form::-webkit-scrollbar {
+  width: 4px;
+}
+
+form::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 12px 0;
+}
+
+form::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  border-radius: 9999px;
+}
+
+form::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 60%, transparent);
+}
+
+.product-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.product-detail-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.checkout-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.cart-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.receipt-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+.profile-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+.home-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.terms-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.orders-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.order-progress-shell {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--color-primary) 18%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-secondary) 18%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, color-mix(in srgb, var(--color-soft) 14%, transparent) 0, transparent 48%),
+    linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 46%, color-mix(in srgb, var(--color-light) 85%, var(--color-soft)) 100%);
+  background-size: 220% 220%;
+  animation: authGradientShift 18s ease-in-out infinite;
+}
+
+.zigzag-top { clip-path: polygon( 0% 100%, 2% 0%, 4% 100%, 6% 0%, 8% 100%, 10% 0%, 12% 100%, 14% 0%, 16% 100%, 18% 0%, 20% 100%, 22% 0%, 24% 100%, 26% 0%, 28% 100%, 30% 0%, 32% 100%, 34% 0%, 36% 100%, 38% 0%, 40% 100%, 42% 0%, 44% 100%, 46% 0%, 48% 100%, 50% 0%, 52% 100%, 54% 0%, 56% 100%, 58% 0%, 60% 100%, 62% 0%, 64% 100%, 66% 0%, 68% 100%, 70% 0%, 72% 100%, 74% 0%, 76% 100%, 78% 0%, 80% 100%, 82% 0%, 84% 100%, 86% 0%, 88% 100%, 90% 0%, 92% 100%, 94% 0%, 96% 100%, 98% 0%, 100% 100% ); }
+
+
+.figure-reveal {
+  animation: figureFloatIn 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
+}
+
+@keyframes figureFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    filter: blur(6px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+    filter: blur(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.section-title {
+  margin-bottom: 0.75rem;
+}
+
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: var(--color-soft);
+  padding: 0.55rem 1rem;
+  color: var(--color-dark);
+}
+
+.white-box {
+  border-radius: 0.9rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--color-soft);
+  background-color: var(--color-light);
+  padding: 1rem;
+  line-height: 1.9rem;
+}
+
+
+.testimonial-track {
+  width: max-content;
+  animation: testimonialScroll 55s linear infinite;
+}
+
+
+
+@keyframes testimonialScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
